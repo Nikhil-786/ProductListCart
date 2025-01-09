@@ -7,17 +7,14 @@ function App() {
   const [desertdata, setData] = useState([]);
 
   useEffect(() => {
-  
     setData(data);
   }, []);
 
   return (
     <div className="App">
       <h1>Desserts</h1>
-      <div>
-      
-         <RestaurantMenu items={desertdata} />
-   
+      <div className="maindiv">
+        <RestaurantMenu items={desertdata} />
       </div>
     </div>
   );
