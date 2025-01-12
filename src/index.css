@@ -17,9 +17,10 @@ ul {
   width: 244px;
 }
 .cards {
+  width: 1000px;
   display: grid;
-  grid-template-columns: 300px 300px 300px 300px;
-  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 300px;
 }
 
 .menuimg {
@@ -32,11 +33,27 @@ ul {
   margin-top: 20px;
   width: 150px;
   height: 30px;
-  background-color: hsl(14, 86%, 42%);
+  background-color: #ffffff;
   padding-top: 5px;
   border-radius: 30px;
   color: white;
-  margin-left: 30px;
+  margin-left: 10px;
+  color: black;
+}
+#cart{  
+ position: fixed;
+ right: 0;
+ margin-right: 300px;
+ height: 300px;
+ width: 300px;
+ margin-top: 20px;
+ border: 1px solid black;
+
 }
 
+#head{
+  width: 100px;
+text-align: left;
+margin-left: 300px;
 
+}
