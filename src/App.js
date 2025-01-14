@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1 id="head">Desserts</h1>
-     
+
       <div className="maindiv">
         <RestaurantMenu items={desertdata} />
       </div>
