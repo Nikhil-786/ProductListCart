@@ -8,7 +8,7 @@ const OrderConfirmation = ({ items,dialogId }) => {
       {items.map((data, index) => {
         return (
           <h3 key={index}>
-            {data.name}- ${data.price}
+          {data.count}  {data.name}- ${data.price}
           </h3>
         );
       })}
