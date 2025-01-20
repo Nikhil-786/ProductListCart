@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Nikhil-786/ProductListCart/static/css/main.89a78361.css",
-    "main.js": "/Nikhil-786/ProductListCart/static/js/main.be3c0630.js",
-    "index.html": "/Nikhil-786/ProductListCart/index.html",
-    "main.89a78361.css.map": "/Nikhil-786/ProductListCart/static/css/main.89a78361.css.map",
-    "main.be3c0630.js.map": "/Nikhil-786/ProductListCart/static/js/main.be3c0630.js.map"
+    "main.css": "/ProductListCart/static/css/main.89a78361.css",
+    "main.js": "/ProductListCart/static/js/main.be3c0630.js",
+    "index.html": "/ProductListCart/index.html",
+    "main.89a78361.css.map": "/ProductListCart/static/css/main.89a78361.css.map",
+    "main.be3c0630.js.map": "/ProductListCart/static/js/main.be3c0630.js.map"
   },
   "entrypoints": [
     "static/css/main.89a78361.css",
