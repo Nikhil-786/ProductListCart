@@ -1,13 +1,11 @@
 import "./App.css";
 import { useState } from "react";
-import CartItems from "./CartItems.js";
-import OrderConfirmation from "./OrderConfirmation.js";
-import getImageURL from "./utils/image-utils.js";
 
+import OrderConfirmation from "./OrderConfirmation.js";
 
 const RestaurantMenu = ({ items }) => {
   const [menuItems, setMenuItems] = useState([]);
-  console.log(menuItems);
+
   const handleClick = (item, event, index) => {
     let next = 0;
     let count = 1;
@@ -48,9 +46,6 @@ const RestaurantMenu = ({ items }) => {
   };
 
   const handleSub = (index, mitem, event) => {
-    const AddToCart = mitem.map((Data) => Data.category);
-    const reverseAdd = document.getElementById(AddToCart);
-
     let nextProduct = mitem.map((data) => {
       if (data.id === index) {
         return {
@@ -89,6 +84,24 @@ const RestaurantMenu = ({ items }) => {
     setMenuItems(nextProduct);
   };
 
+  const handleMenuClose = (dataId, removeOrder) => {
+    console.log(dataId);
+    console.log(removeOrder);
+    const filterdata = removeOrder.filter((data) => data.id !== dataId);
+    const filterBTN = removeOrder.filter((data) => data.id === dataId);
+    const category = filterBTN.map((data) => data.category);
+    const operatorBTN = removeOrder.filter((data) => data.id === dataId);
+    const operatorID = operatorBTN.map((data) => data.id);
+    const reverseBtn  = document.getElementById('Operator'+operatorID.toString());
+
+    const addcartBTN = document.getElementById(category.toString());
+    addcartBTN.style.visibility = "visible";
+    reverseBtn.style.visibility='hidden';
+   
+
+    setMenuItems(filterdata);
+  };
+
   const handleOrderSummary = () => {
     const modal = document.getElementById("OrderComfirmation");
 
@@ -100,6 +113,14 @@ const RestaurantMenu = ({ items }) => {
       <div className="cards">
         <div id="cart">
           <h1 id="OrderHeader">Your Cart({menuItems.length})</h1>
+          {menuItems.length === 0 ? (
+            <img
+              src="./assets/images/illustration-empty-cart.svg"
+              alt="emptyCart"
+            ></img>
+          ) : (
+            menuItems.length
+          )}
           {menuItems.map((data, index) => {
             let result = 0;
             return (
@@ -115,15 +136,33 @@ const RestaurantMenu = ({ items }) => {
                       &nbsp;&nbsp;${(result = result + data.count * data.price)}
                     </span>
                   </li>
-                  <span className="close">X</span>
+                  <span
+                    className="close"
+                    onClick={() => handleMenuClose(data.id, menuItems)}
+                  >
+                    X
+                  </span>
                 </div>
               </div>
             );
           })}
           <div>
-            Order Summary{" "}
-            {menuItems.reduce((acc, curr) => acc + curr.price * curr.count, 0)}
+            {menuItems.length === 0 ? (
+              <label>Your added Item will appear here</label>
+            ) : (
+              <label>
+                Order Summary-
+                <h3>
+                  $-
+                  {menuItems.reduce(
+                    (acc, curr) => acc + curr.price * curr.count,
+                    0
+                  )}
+                </h3>
+              </label>
+            )}
           </div>
+          &nbsp;
           <button
             id="OrderSummary"
             style={{ visibility: "hidden" }}
@@ -135,10 +174,10 @@ const RestaurantMenu = ({ items }) => {
 
         {items.map((item, index) => {
           return (
-            <ul key={index}>
+            <ul key={index} className="Itemcards">
               <li>
                 <img
-                  src={getImageURL(item.image.desktop)}
+                  src={item.image.desktop}
                   alt={item.name}
                   className="menuimg"
                 />
